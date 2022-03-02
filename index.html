@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Maze</title>
+ <link rel="stylesheet" href="style.css">
+ <link rel="icon" type="image/x-icon" href="images/ufo.png">
+</head>
+<body>
+<div id="wrapper">
+	<div id="header">
+		ALIEN INVASION
+	</div>
+	
+	<div id="main">
+		<canvas id="canvas" width="700" height="700">
+		
+		</canvas> 
+	</div>
+	<div id="earth">
+	</div>
+</div>
+
+
+<script>
+var canvas = document.getElementById('canvas');
+var ctx = canvas.getContext('2d');
+
+ctx.scale(2,2);
+function labirint(){
+ctx.stroke();
+}
+var y=1;
+var x = 173;
+var nar=1;
+var dx=1;
+var dy=1;
+var img=new Image();
+img.src='images/ufo.png';
+
+
+function drawIt() {
+ctx.fillStyle = "#00ff0d";
+if(nar==1){
+ctx.fillRect(x,y,4,4);
+}
+else if(nar==2){
+ctx.clearRect(x-9,y-9, 20, 20);
+ctx.drawImage(img, x-5, y-5, 15, 11);
+//labirint();
+}
+
+	const cx=[173, 215, 229, 339, 325, 339, 325, 339, 298, 339, 325, 339, 325, 311, 297, 283, 269, 256, 270, 284, 270, 284, 256, 270, 242, 228, 200, 173, 159, 145, 159, 145, 117, 159, 187, 173];
+	
+	const cy=[1, 7, 49, 7, 35, 47, 89, 103, 117, 131, 145, 159, 173, 187, 159, 145, 159, 145, 171, 186, 215, 229, 243, 256, 298, 284, 270, 256, 270, 256, 284, 298, 326, 340, 326, 340, 346];
+
+	for(let i=0;i<cx.length;i++){
+		if(x==cx[i] && y>=cy[i] && y<=cy[i+1])
+			y+=dy;
+		if(y==cy[i] && x>=cx[i-1] && x<=cx[i])
+			x+=dx;
+		if(x==cx[i-1] && y<=cy[i-1] && y>=cy[i])
+			y-=dy;
+		if(y==cy[i] && x<=cx[i-1] && x>=cx[i])
+			x-=dx;
+		if(x==173 && y==346){
+			x=173;
+			y=1;
+			nar++;
+		}
+	}
+		
+  
+	
+}
+setInterval(drawIt, 6); 
+</script>
+
+</body>
+</html>
