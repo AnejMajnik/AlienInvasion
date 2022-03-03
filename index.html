@@ -16,7 +16,7 @@
 		
 		</canvas> 
 	</div>
-		<div id="restart" onclick="replay()">
+		<div id="restart" onClick="window.location.reload(true)">
 		RESTART
 		</div>
 	<img id="earth" src="images/earth.png">
@@ -42,6 +42,7 @@ var img=new Image();
 img.src='images/ufo.png';
 var audio = new Audio('sounds/siren.mp3');
 audio.volume=0.4;
+
 const replay=document.querySelector(".replay");
 
 
